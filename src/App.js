@@ -7,8 +7,8 @@ import MyRecipesComponents from "./MyRecipeComponent";
 
 
 function App() {
-//const MY_ID = "57611161";
-//const MY_KEY = "%20b600588033414b312758ee79cc3ec0b0%09"
+const MY_ID = "57611161";
+const MY_KEY = "%20b600588033414b312758ee79cc3ec0b0%09"
 
 // вызов API
 
@@ -18,7 +18,7 @@ const [wordSubmitted, setWordSubmitted] = useState("avocado");
 
 useEffect (() => {
   const getRecipe = async () => {
-    const response = await fetch("https://api.edamam.com/api/recipes/v2?type=public&q=${wordSubmitted}&app_id=57611161&app_key=%20b600588033414b312758ee79cc3ec0b0%09");
+    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSubmitted}&app_id=${MY_ID}&app_key=${MY_KEY}`);
     const data = await response.json();
     setMyRecipes(data.hits);
   }
@@ -51,7 +51,7 @@ const finalSearch = (e) => {
 </div>
 
 <div className='container'>
-     <button>
+     <button onClick={finalSearch}>
          <img src="https://img.icons8.com/fluency/48/000000/fry.png" alt="icon"/>
       </button>
 </div>
